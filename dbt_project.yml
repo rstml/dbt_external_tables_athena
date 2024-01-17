@@ -1,0 +1,8 @@
+# Project name (lowercase) and version
+name: 'dbt_external_tables_athena'
+version: '0.0.1'
+config-version: 2
+
+require-dbt-version: ">=1.0.0"
+
+macro-paths: ["macros"]
