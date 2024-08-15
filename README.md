@@ -13,7 +13,7 @@ Add to `packages.yml` in your project:
 ```yaml
 packages:
    - package: dbt-labs/dbt_external_tables
-     revision: ['>=0.8.7']
+     version: ['>=0.8.7']
    - git: https://github.com/rstml/dbt-external-tables-athena/
      revision: 0.0.2
 ```
