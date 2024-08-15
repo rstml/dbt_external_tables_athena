@@ -4,6 +4,7 @@
     {% set target_relation = source(source_node.schema, source_node.name) %}
 
     {% if lf_tags_config is not none %}
+        {{ log("Updating LFTags for " ~ target_relation, true) }}
         {% do adapter.add_lf_tags(target_relation, lf_tags_config) %}
     {% endif %}
 
