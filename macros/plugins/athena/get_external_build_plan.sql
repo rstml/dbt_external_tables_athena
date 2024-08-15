@@ -6,7 +6,7 @@
         identifier = source_node.identifier
     ) %}
     {% set create_or_replace = (old_relation is none or var('ext_full_refresh', false)) %}
-    {% if create_or_replace %}
+    {% if create_or_replace and source_node.columns|length %}
         {% set build_plan = [
                 dbt_external_tables.dropif(source_node),
                 dbt_external_tables.create_external_table(source_node)
