@@ -1,8 +1,9 @@
 {% macro athena__create_external_table(source_node) %}
+
     {%- set columns = source_node.columns.values() -%}
     {%- set external = source_node.external -%}
-    {# https://docs.aws.amazon.com/athena/latest/ug/create-table.html #}
-    create external table {{source(source_node.source_name, source_node.name)}} (
+    
+    create external table {{source(source_node.source_name, source_node.name).render_hive()}} (
     {% for column in columns %}
         {{column.name}} {{column.data_type}}
         {{- ',' if not loop.last -}}
@@ -30,4 +31,5 @@
     {% if external.serde_properties -%} with serdeproperties {{external.serde_properties}} {%- endif %}
     {% if external.location -%} location '{{external.location}}' {%- endif %}
     {% if external.table_properties -%} tblproperties {{external.table_properties}} {%- endif %}
+    ;
 {% endmacro %}
